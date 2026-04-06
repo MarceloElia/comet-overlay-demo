@@ -1,0 +1,136 @@
+\documentclass[12pt]{article} % Sets normal text font size to 12pt
+\usepackage[hidelinks,linktoc=all]{hyperref}
+\usepackage{sectsty} % Ermöglicht Anpassung der Schriftarten für Überschriften
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{soul}
+
+\title{\textbf{\fontsize{50}{60}\selectfont TU München}\\ % Make "TU München" bold
+\vspace{0.5cm} \textbf{\Huge Bericht der Ingenieurspraxis} \\ % Make "Bericht der Ingenieurspraxis" bold
+\vspace{0.3cm} \Large B.Sc. Elektrotechnik und Informationstechnik} % Keep "B.Sc. ..." normal
+
+\date{} % Remove the default date
+
+\sectionfont{\Large} % Adjusts section font size
+\subsectionfont{\large} % Adjusts subsection font size
+
+\renewcommand{\contentsname}{Inhaltsverzeichnis} % Change the title of the table of contents
+
+\begin{document}
+
+\maketitle
+
+\vspace{2cm} % Add space after the main title
+
+% Additional information
+\begin{center}
+    \Large \textit {Betreuender Professor:} \\ Prof. Dr.-Ing. Thomas Eibert \\[0.5cm]
+    \Large \textit {Fachgebiet:} \\ Lehrstuhl für Hochfrequenztechnik \\[0.5cm]
+    \Large \textit {Student:} \\ Marcelo Leindl\hspace{0.5cm}03787928
+\end{center}
+
+\newpage
+
+% Inhaltsverzeichnis
+\tableofcontents
+\newpage
+
+\section{Comet AG}
+\subsection{Arbeitsplan}
+Nach der Einführung von neuen Produkten im X-Ray Lineup von Comet werden neue Test-Pipelines benötigt, welche auf Stabilität, technischer Korrektheit und Einhalten von Boundaries prüfen.
+Produkte, die bereits ausgeliefert werden, sind schon in einem täglichen Testprotokoll enthalten, in dieser müssen die neuen Produkte integriert werden.
+Die existierenden Tests müssen nach dem Don't repeat yourself Prinzip (DRY) überarbeitet werden und wenn möglich generisch gestaltet werden, damit sie für die einzelnen Produkte wiederverwendbar sind.
+
+\subsection{Lorem Ipsum}
+Die Ingenieurspraxis wurde in der Industrial X-Ray Modules (IXM) Abteilung von Comet AG durchgeführt. Von der größeren Produktauswahl der Division hat sich mein Arbeitsaufwand wesentlich auf die folgenden drei spezialisiert.
+\textbf{Xplorer Series} (micro focus) ist ein Röntgenmodul für hochauflösende Inline-Inspektionen kleiner Bauteile in industriellen Produktionsprozessen. Typischer Anwendungsfall ist die Qualitätskontrolle von Halbleiterbauteilen und Lithium-Ionen-Batteriezellen auf kleinste Defekte.
+Der Xplorer 130 arbeitet mit einer maximalen Röhrenspannung von 130 kV und erreicht eine minimale Auflösung von 5 µm. Die maximale Leistung beträgt 30 W mit einer Strahlungsabdeckung von 115° in beiden Achsen.
+\\
+\\
+\hl{Auch für die beiden anderen Produkte?}
+\\
+\\
+Die ersten Tage wurden primär genutzt, um mir einen Einblick in das System zu geben. Nach der Übergabe der Arbeitswerkzeuge wurde ein Onboarding durchgeführt, um die Firmenstruktur zu erklären, mein Arbeitsbereich und Tätigkeitsfeld klar zu definieren und mir die Produkte im Labor vorzustellen. 
+Mir wurde das Team, zuständig für die Testautomatisierung, vorgestellt, welches sich aus meinen 4 Kollegen zusammensetzt, welche alle in der Softwareentwicklung tätig sind mit Hintergrund in Elektrotechnik und Physik.
+Im Labor wurde mir die Produktpalette vorgestellt, ihre Funktionen und Einsatzbereiche erklärt. Die Produkte teilten sich auf in ihren Tätigkeiten, ein Teil führte den Röntgentest auf einem Testobjekt aus, andere waren lediglich da, um die Stabilität für die Inputwerte zu testen und außerhalb vom Labor neben den Arbeitsplätzen waren Module, die Simulationen der Geräte durchführten. 
+\\
+\\
+Für den Xplorer waren bereits die meisten Tests in der Testpipeline integriert und auf dem Main Branch in der Umgebung Git implementiert. Jeden Abend und nach expliziten Abfragen wurden diese Tests ausgeführt und auf ihre Korrektheit geprüft.
+Die Aufgabe bestand darin, diese Tests generisch zu gestalten, da sie davor für hardcodierte Werte ausgelegt waren. In dem vorliegenden Fall ging es erstmals nur um die Tests für die Maxima und Minima Inputs sowie Outputs. Die erste Woche wurde hauptsächlich genutzt, um sich mit der Umgebung vertraut zu machen, die Testabläufe zu verstehen und sich Gedanken zu machen über die technischen Grenzen des Systems.
+Ich wurde in die Softwareentwicklungsprozesse und die dazugehörigen Werkzeuge eingeführt, dabei sollte ich eigenständig die zu aktualisierenden Tests anschauen und sie mit bereits generisch umgewandelten vergleichen und die Logik dahinter verstehen.
+Die Arbeitsumgebung bestand aus verschiedener Software, die Entwicklung wurde mittels Python in der Softwareumgebung Visual Studio Code durchgeführt, Git für die Versionskontrolle und Speicherung von Veränderungen, Jenkins für die Testautomatisierung und die Testpipeline, Jira für die Projektplanung und Dokumentation der Aufgaben, Confluence für die Dokumentation der Testfälle und die Kommunikation mit den Kollegen.
+\\
+\\
+Ein Teil der Aufgabe bestand darin, die Werte, die festgesetzt wurden, mittels Variablen aus einer Produktdatenbank auszulesen und sie somit flexibel zu gestalten. Ein realer Fall war die Änderung von einem Grenzwert für die Röhrenspannung eines Produktes, aufgetragen von der Abteilung zuständig für die internen Komponenten.
+Typische Tests waren die Überprüfung der Eingaben für die Spannung und des Emissionsstroms, die vorerst auf den Simulationen getestet wurden, um sicherzustellen, dass keine Arbeitspunkte außerhalb der Grenzen angefahren werden und diese immer auf die Grenzwerte gedrosselt oder hochgefahren werden.
+Zur Überprüfung werden Werte unterhalb und oberhalb der Grenzen angefahren, um das Verhalten des Systems zu überprüfen. Im Code müssen die betroffenen Komponenten mit den Werten gesetzt werden und nach einer gewissen Zeit, die in den Spezifikationen festgelegt wurde, abgefragt werden, um ihre Korrektheit zu überprüfen.
+Eine weitere Abfrage bestand darin, die Werte des Heaters zu überprüfen, diese ist dafür zuständig, die Kathode zu erhitzen und bestimmt je nach Temperatur die Anzahl der in Bewegung gesetzten Elektronen. Die Ansteuerung hier ist relativ empfindlich, da die Zeit bis zum Erreichen und die des Haltens der Temperatur nur eine geringe Marge hat.
+Bei Abweichungen differenzieren sich die Anzahl der Elektronen und oder kann es zu erhöhter Abreibung des Heizdrahtes kommen. Neben dem Testen der Zeit für das ramp up, steady state und cool off, ist weiterhin wichtig, die emission current zu überprüfen und sicherzustellen, dass sie intern korrekt geregelt wird. Es handelt sich hier um ein closed Loop System, welches für eine stabile Emission sorgt.
+\\
+\\
+\dots
+\\
+\\
+Häufig wurden für die Abfrage einzelner Parameter vier Testfälle erstellt, jeweils einen für das Über- und Unterschreiten der Grenzwerte um eine geringe Marge, wie 5\%, und jeweils ein Test, der auf die Konvergenz gegen Null und unendlich prüft. Es wurden auch Testfälle erstellt, welche die Kombination von Grenzwerten prüfen, wie zum Beispiel die Röhrenspannung und der Emissionsstrom, da diese in einem engen Zusammenhang stehen. 
+\\
+\\
+Nachdem für den Xplorer die meisten Tests angepasst wurden und sie generisch und nach dem DRY Prinzip gestaltet wurden, war der nächste Schritt die Anpassung der Tests für die anderen Produkte, welche teilweise noch nicht in der Testpipeline integriert waren.
+Manche Tests ließen sich direkt übernehmen, da durch die generische Form lediglich die Parameter geändert wurden und die Syntax gleich blieb, andere mussten teilweise angepasst werden, da die Produkte sich in Komponenten und Funktionen unterschieden.
+Ein wesentlicher Unterschied zwischen Nano Focus- und Meso Focus Röntgenquellen besteht in der Abhängigkeit der Focal-Spot Größe vom Emissionsstrom. Bei Nano Focus Röhren führt ein steigender Emissionsstrom aufgrund von Space-Charge Effekten zu einer deutlichen Vergrößerung des Elektronenstrahls und damit des Focal Spots.
+Entsprechend müssen Testfälle die Beziehung zwischen Emissionsstrom und Spotgröße prüfen. Bei Meso Focus Röhren ist dieser Effekt deutlich geringer, weshalb hier eher thermische Stabilität und Leistungsstabilität über längere Betriebszeiten getestet werden.
+Ein weiterer essenzieller Unterschied ist, dass das Warm-up Verhalten sich zwischen Nano Focus- und Meso Focus-Röntgenquellen deutlich unterscheidet. Bei Nano-Focus Systemen liegt der Schwerpunkt auf der Stabilisierung der Kathode und des Elektronenstrahls, da bereits geringe thermische Änderungen zu einer Veränderung des Focal Spots führen können. Entsprechend prüfen Testfälle die Stabilität der Spotgröße und der Emission.
+Bei Meso-Focus Systemen steht hingegen die thermische Stabilisierung der Anode im Vordergrund, da diese mit deutlich höheren Leistungen betrieben werden. Warm-up Tests konzentrieren sich hier auf eine kontrollierte Leistungsrampe und die Überwachung thermischer Belastungen.
+\\
+\\
+Alle der besprochenen Testfälle und noch einige weitere wurden selbstständig angepasst oder komplett neu erstellt. Die meisten wurden bereits vor Jahren implementiert, jedoch nie aktualisiert und teilweise sogar nie auf ihre Korrektheit überprüft. Mein Betreuer musste mir anfangs noch viel helfen, mich in der Programmierumgebung wohl zu fühlen und eigenständig zu arbeiten, jedoch wurde ich schnell selbständig und musste nur noch bei systembezogenen Fragen auf ihn zukommen.
+Für mich wurden die drei Module als Simulationen bereitgestellt und nach erfolgreicher Einrichtung der Ansteuerung konnte ich meine Tests lokal laufen lassen. Nach Absprache mit meinem Betreuer konnte ich diese auch abends in die Testpipeline integrieren. Bei lokalen oder online Fehlmeldungen musste ich mich durch die Pytest-Logs lesen und aus den Errors meinen Fehler herausfinden und dementsprechend anpassen.
+Für die Auswertung der real-time Simulationen stand mir ein Dashboard zur Verfügung, welches mein Betreuer programmiert hat und mir die Freiheit gab, es nach meinen Bedürfnissen anzupassen. Es zeigte mir die Zustände einzelner Komponenten an, ob diese in ihre Limits geraten sind. Außerdem wurden die gesetzten und angefahrenen Setpoints visuell angezeigt.
+Nach mehrfacher korrekter Ausführung in der Pipeline und Abschluss einzelner Themenblöcke konnte ich zusammen mit meinem Betreuer meinen Git-Branch auf den Main Branch pushen und somit meine Arbeit offiziell ins System integrieren.
+\\
+\\
+\hl{Bullshit erzählen, von wegen, dass ich hintengeholfen habe im Serverbereich Teile der Generatoren umzustecken und die Komponenten in ihre Casings gepackt habe.\\ \\ Formeln in der Produktdatenbank erstellt, für die Werteberechnungen!}
+\\
+\\
+In den täglich und wöchentlich angesetzten Meetings mit meinem Team und mit der ganzen Abteilung wurden wir gegenseitig über den aktuellen Fortschritt auf dem Laufenden gehalten, wie auch ich über meinen Fortschritt informiert habe.
+Teilweise habe ich auch anderen Kollegen geholfen, wie bei der Suche nach Problemstellen, oder bei der Recherche gewisser Themen, um zuvor nicht behandelte Testfälle abzufragen. 
+
+\subsection{Summarium}
+\hl{Testergebnisse, was nach mir alles automatisch in der Pipeline läuft.
+Das Testoverlay nachprogrammieren und vorstellen, eventuell Video erstellen.
+Verständnis der Produkte.}
+
+\hl{Zu Überprüfen:
+\\
+\\
+Reihenfolge des Textes
+\\
+\\
+Zusammenhang des Systems - Generator zu Modul - etc.
+\\
+\\
+Darstellung zeigen und Prozess erklären der Röntgenstrahlung. Alles selber nachbauen!!
+\\
+\\
+}
+\newpage
+
+\section{PricewaterhouseCoopers GmbH}
+\subsection{Lorem Ipsum}
+\subsection{Lorem Ipsum}
+\subsection{Summarium}
+
+\newpage
+
+\newpage
+
+\section{Einheits-/ Formelverzeichnis}
+
+% Literaturverzeichnis
+\section{Literaturverzeichnis}
+\begin{thebibliography}{99}
+    \bibitem{quelle1} Autor Vorname Nachname, \textit{Titel des Buches}, Verlag, Jahr.
+    \bibitem{quelle2} Autor Vorname Nachname, \textit{Titel des Artikels}, Zeitschrift, Jahr.
+    \bibitem{quelle3} Autor Vorname Nachname, \textit{Titel der Webseite}, URL: \url{https://example.com}, Zugriff am: 5. März 2026.
+\end{thebibliography}
+
+\end{document}

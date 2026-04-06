@@ -1,0 +1,20 @@
+\contentsline {section}{\numberline {1}Praktikumsstelle I: Comet AG}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Ausgangslage und Aufgabenstellung}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Unternehmen, Produkte und technischer Hintergrund}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Einordnung der Abteilung und der bearbeiteten Produkte}{3}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Einarbeitung in Team, Labor und Arbeitsumgebung}{6}{subsubsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.3}Durchführung der Arbeiten}{7}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Analyse der bestehenden Testpipeline und Einarbeitung in die Werkzeuge}{7}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Parametrisierung und Implementierung von Grenzwerttests}{7}{subsubsection.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.3.3}Tests von Heater, Emission und Regelverhalten}{8}{subsubsection.1.3.3}%
+\contentsline {subsubsection}{\numberline {1.3.4}Beispiel eines automatisierten Emissionsgrenzwerttests}{8}{subsubsection.1.3.4}%
+\contentsline {subsubsection}{\numberline {1.3.5}Struktur der Testfälle und Kombination technischer Grenzwerte}{9}{subsubsection.1.3.5}%
+\contentsline {subsubsection}{\numberline {1.3.6}Übertragung auf weitere Produkte und produktspezifische Unterschiede}{9}{subsubsection.1.3.6}%
+\contentsline {subsubsection}{\numberline {1.3.7}Lokale Ausführung, Integration in die Pipeline und Zusammenarbeit im Team}{10}{subsubsection.1.3.7}%
+\contentsline {subsection}{\numberline {1.4}Ergebnisse und Einordnung}{10}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Praktikumsstelle II: PricewaterhouseCoopers GmbH}{12}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Lorem Ipsum}{12}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Lorem Ipsum}{12}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Summarium}{12}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Einheits-/ Formelverzeichnis}{13}{section.3}%
+\contentsline {section}{\numberline {4}Literaturverzeichnis}{13}{section.4}%
