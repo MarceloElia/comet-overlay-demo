@@ -518,7 +518,6 @@ with center:
     </div>
     """
     st.markdown(html, unsafe_allow_html=True)
-
 # Right panel
 with right:
     st.markdown('<div class="section-title">Measurements</div>', unsafe_allow_html=True)
@@ -602,7 +601,7 @@ with right:
         """,
         unsafe_allow_html=True,
     )
-    
+
 # ------------------------------------------------------------
 # Bottom section
 # ------------------------------------------------------------
