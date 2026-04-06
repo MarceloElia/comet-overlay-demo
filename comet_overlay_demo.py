@@ -1,6 +1,7 @@
 import random
 import time
 from datetime import datetime
+import textwrap
 
 import streamlit as st
 
@@ -462,69 +463,58 @@ with center:
     hv_display = f"{st.session_state.measured_voltage:.1f} kV"
     target_display = f"{st.session_state.target_temp:.1f} °C"
 
-    html = f"""
-    <div class="demo-panel" style="height:520px; position:relative; overflow:hidden;">
-        <div style="
-            position:absolute;
-            inset:0;
-            background:
-                radial-gradient(circle at 50% 50%, #161c28 0%, #10151d 65%, #0b0f15 100%);
-            border-radius:18px;
-        "></div>
+    html = textwrap.dedent(f"""
+<div class="demo-panel" style="height:520px; position:relative; overflow:hidden;">
+    <div style="
+        position:absolute;
+        inset:0;
+        background:
+            radial-gradient(circle at 50% 50%, #161c28 0%, #10151d 65%, #0b0f15 100%);
+        border-radius:18px;
+    "></div>
 
-        <div style="
-            position:absolute;
-            top:78px;
-            left:70px;
-            width:560px;
-            height:300px;
-            border:1px solid #2b3340;
-            border-radius:18px;
-            background:rgba(255,255,255,0.015);
-            box-shadow: inset 0 0 18px rgba(255,255,255,0.02);
-        "></div>
+    <div style="
+        position:absolute;
+        top:72px;
+        left:78px;
+        width:540px;
+        height:300px;
+        border:1px solid #2b3340;
+        border-radius:18px;
+        background:rgba(255,255,255,0.015);
+        box-shadow: inset 0 0 18px rgba(255,255,255,0.02);
+    "></div>
 
-        {overlay_component("Controller", "98px", "92px", "118px", "54px", st.session_state.parts["Controller"], "")}
-        {overlay_component("HV", "98px", "222px", "92px", "54px", st.session_state.parts["HV"], hv_display)}
-        {overlay_component("Grid", "98px", "326px", "92px", "54px", st.session_state.parts["Grid"], "")}
-        {overlay_component("Target", "98px", "430px", "118px", "54px", st.session_state.parts["Target"], target_display)}
+    {overlay_component("Controller", "92px", "102px", "104px", "54px", st.session_state.parts["Controller"], "")}
+    {overlay_component("HV",         "92px", "222px", "104px", "54px", st.session_state.parts["HV"], hv_display)}
+    {overlay_component("Grid",       "92px", "342px", "104px", "54px", st.session_state.parts["Grid"], "")}
+    {overlay_component("Target",     "92px", "462px", "104px", "54px", st.session_state.parts["Target"], target_display)}
 
-        {overlay_component("Heater", "164px", "118px", "108px", "58px", st.session_state.parts["Heater"], heater_display)}
-        {overlay_component("Cathode", "164px", "286px", "108px", "58px", st.session_state.parts["Cathode"], "")}
-        {overlay_component("Cooling", "164px", "454px", "108px", "58px", st.session_state.parts["Cooling"], "")}
+    {overlay_component("Heater",     "158px", "102px", "104px", "54px", st.session_state.parts["Heater"], heater_display)}
+    {overlay_component("Cathode",    "158px", "222px", "104px", "54px", st.session_state.parts["Cathode"], "")}
+    {overlay_component("Emission",   "158px", "342px", "104px", "54px", st.session_state.parts["Emission"], emission_display)}
+    {overlay_component("Cooling",    "158px", "462px", "104px", "54px", st.session_state.parts["Cooling"], "")}
 
-        {overlay_component("Emission", "236px", "182px", "126px", "64px", st.session_state.parts["Emission"], emission_display)}
-        {overlay_component("Vacuum", "236px", "374px", "126px", "64px", st.session_state.parts["Vacuum"], "")}
+    {overlay_component("Vacuum",     "224px", "222px", "224px", "54px", st.session_state.parts["Vacuum"], "")}
 
-        <div style="
-            position:absolute;
-            top:188px;
-            left:225px;
-            width:210px;
-            height:6px;
-            background:#86aefc55;
-            box-shadow:0 0 12px #6ca8ff55;
-            border-radius:999px;
-        "></div>
-
-        <div style="
-            position:absolute;
-            bottom:18px;
-            left:18px;
-            right:18px;
-            display:flex;
-            justify-content:space-between;
-            color:{MUTED};
-            font-size:0.8rem;
-        ">
-            <div>orange = warm-up / warning</div>
-            <div>green = stable</div>
-            <div>red = limit exceeded / fault</div>
-        </div>
+    <div style="
+        position:absolute;
+        bottom:18px;
+        left:18px;
+        right:18px;
+        display:flex;
+        justify-content:space-between;
+        color:{MUTED};
+        font-size:0.8rem;
+    ">
+        <div>orange = warm-up / warning</div>
+        <div>green = stable</div>
+        <div>red = limit exceeded / fault</div>
     </div>
-    """
-    st.markdown(html, unsafe_allow_html=True)
-    
+</div>
+""")
+st.markdown(html, unsafe_allow_html=True)
+
 # Right panel
 with right:
     st.markdown('<div class="section-title">Measurements</div>', unsafe_allow_html=True)
