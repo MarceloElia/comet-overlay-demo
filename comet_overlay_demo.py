@@ -435,22 +435,28 @@ left, center, right = st.columns([0.9, 1.7, 1.0])
 
 # Left panel
 with left:
-    st.markdown('<div class="section-title">Supervision Units</div>', unsafe_allow_html=True)
-    for part in ["Controller", "HV", "Emission", "Heater", "Grid", "Cooling", "Vacuum", "Target", "Cathode"]:
-        st.markdown(
-            metric_card(
-                part,
-                status_label(st.session_state.parts[part]),
-                "",
-                st.session_state.parts[part],
-            ),
-            unsafe_allow_html=True,
-        )
+    left_a, left_b = st.columns(2)
+
+    left_parts = [
+        "Controller", "HV", "Emission", "Heater",
+        "Grid", "Cooling", "Vacuum", "Target", "Cathode"
+    ]
+
+    for i, part in enumerate(left_parts):
+        target_col = left_a if i % 2 == 0 else left_b
+        with target_col:
+            st.markdown(
+                metric_card(
+                    part,
+                    status_label(st.session_state.parts[part]),
+                    "",
+                    st.session_state.parts[part],
+                ),
+                unsafe_allow_html=True,
+            )
 
 # Center overlay
 with center:
-    st.markdown('<div class="section-title">Overlay</div>', unsafe_allow_html=True)
-
     heater_display = f"{st.session_state.measured_heater:.2f} A"
     emission_display = f"{st.session_state.measured_emission:.3f} mA"
     hv_display = f"{st.session_state.measured_voltage:.1f} kV"
@@ -468,33 +474,33 @@ with center:
 
         <div style="
             position:absolute;
-            top:70px;
+            top:78px;
             left:70px;
             width:560px;
-            height:320px;
+            height:300px;
             border:1px solid #2b3340;
-            border-radius:20px;
+            border-radius:18px;
             background:rgba(255,255,255,0.015);
             box-shadow: inset 0 0 18px rgba(255,255,255,0.02);
         "></div>
 
-        {overlay_component("Controller", "92px", "95px", "120px", "58px", st.session_state.parts["Controller"], "")}
-        {overlay_component("HV", "92px", "228px", "96px", "58px", st.session_state.parts["HV"], hv_display)}
-        {overlay_component("Grid", "92px", "337px", "96px", "58px", st.session_state.parts["Grid"], "")}
-        {overlay_component("Target", "92px", "446px", "110px", "58px", st.session_state.parts["Target"], target_display)}
+        {overlay_component("Controller", "98px", "92px", "118px", "54px", st.session_state.parts["Controller"], "")}
+        {overlay_component("HV", "98px", "222px", "92px", "54px", st.session_state.parts["HV"], hv_display)}
+        {overlay_component("Grid", "98px", "326px", "92px", "54px", st.session_state.parts["Grid"], "")}
+        {overlay_component("Target", "98px", "430px", "118px", "54px", st.session_state.parts["Target"], target_display)}
 
-        {overlay_component("Heater", "164px", "95px", "110px", "62px", st.session_state.parts["Heater"], heater_display)}
-        {overlay_component("Cathode", "164px", "287px", "110px", "62px", st.session_state.parts["Cathode"], "")}
-        {overlay_component("Cooling", "164px", "446px", "110px", "62px", st.session_state.parts["Cooling"], "")}
+        {overlay_component("Heater", "164px", "118px", "108px", "58px", st.session_state.parts["Heater"], heater_display)}
+        {overlay_component("Cathode", "164px", "286px", "108px", "58px", st.session_state.parts["Cathode"], "")}
+        {overlay_component("Cooling", "164px", "454px", "108px", "58px", st.session_state.parts["Cooling"], "")}
 
-        {overlay_component("Emission", "238px", "180px", "125px", "68px", st.session_state.parts["Emission"], emission_display)}
-        {overlay_component("Vacuum", "238px", "378px", "125px", "68px", st.session_state.parts["Vacuum"], "")}
+        {overlay_component("Emission", "236px", "182px", "126px", "64px", st.session_state.parts["Emission"], emission_display)}
+        {overlay_component("Vacuum", "236px", "374px", "126px", "64px", st.session_state.parts["Vacuum"], "")}
 
         <div style="
             position:absolute;
-            top:192px;
-            left:205px;
-            width:235px;
+            top:188px;
+            left:225px;
+            width:210px;
             height:6px;
             background:#86aefc55;
             box-shadow:0 0 12px #6ca8ff55;
@@ -518,6 +524,7 @@ with center:
     </div>
     """
     st.markdown(html, unsafe_allow_html=True)
+    
 # Right panel
 with right:
     st.markdown('<div class="section-title">Measurements</div>', unsafe_allow_html=True)
